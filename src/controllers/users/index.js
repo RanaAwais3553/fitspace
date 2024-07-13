@@ -218,11 +218,11 @@ export const userController = {
         console.log(1);
         await createUserService(req, res);
       } else {
-        console.log("user creation error list in else are:#@#@",errorsList)
+        console.log("user creation error list in else are:#@#@",errorsList,errorsList?.array())
         res.status(401).send({ errors: errorsList });
       }
     } catch (error) {
-      console.log("user creation error list in catch block are:#@#@",errorsList)
+      console.log("user creation error list in catch block are:#@#@",errorsList,errorsList?.array(),error)
       res.status(401).send({ errors: error });
     }
   },
