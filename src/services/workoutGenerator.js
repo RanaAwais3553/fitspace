@@ -330,11 +330,10 @@ function generateDailyExercises(exercises, day, user) {
           selectedExerciseIds.push(randomExercise._id);
           return randomExercise;
         };
-      
+        dailyExercises.push(getRandomUniqueExercise(pushExercises));
         dailyExercises.push(getRandomUniqueExercise(pullExercises));
+        dailyExercises.push(getRandomUniqueExercise(pushExercises));
         dailyExercises.push(getRandomUniqueExercise(pullExercises));
-        dailyExercises.push(getRandomUniqueExercise(pullExercises));
-        dailyExercises.push(getRandomUniqueExercise(coreExercise));
         dailyExercises.push(getRandomUniqueExercise(pushExercises));
       }
     console.log("Daily excercise number of excercise for day 1 are:#@#@",dailyExercises,user.level)
