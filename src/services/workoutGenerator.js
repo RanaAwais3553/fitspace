@@ -291,7 +291,7 @@ function generateDailyExercises(exercises, day, user) {
       legExercises = exercises.filter(exercise => exercise.category === 'lower body');
       pullExercises = exercises.filter(exercise => exercise.category === 'pull');
       coreExercise = exercises.filter(exercise => exercise.category === 'core');
-
+      pushExercises = exercises.filter(exercise => exercise.category === 'push');
       /* 
       The Isometric only categorized and in musclegroup as lower body, legs and calves and only exist for level = adv
       */
@@ -335,6 +335,7 @@ function generateDailyExercises(exercises, day, user) {
         dailyExercises.push(getRandomUniqueExercise(pullExercises));
         dailyExercises.push(getRandomUniqueExercise(pullExercises));
         dailyExercises.push(getRandomUniqueExercise(coreExercise));
+        dailyExercises.push(getRandomUniqueExercise(pushExercises));
       }
     
    
