@@ -237,11 +237,7 @@ export const userController = {
     try {
       const errorsList = validationResult(req);
       if (errorsList.isEmpty()) {
-        let error = new Error();
-        error.httpStatusCode = 500;
-        error.message = "Invalid user";
-        throw error;
-        // await loginUser(req, res, next);
+        await loginUser(req, res, next);
       } else {
         let error = new Error();
         error.httpStatusCode = 500;

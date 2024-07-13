@@ -11,7 +11,7 @@ import { startScheduler } from './scheduler.js';
 // app.js also contains the routes for the server
 
 // PORT
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3000;
 
 // app.listen(port, () => {
 //   console.table(listEndpoints(app));
