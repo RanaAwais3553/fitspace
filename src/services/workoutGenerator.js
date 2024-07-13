@@ -336,7 +336,6 @@ function generateDailyExercises(exercises, day, user) {
         dailyExercises.push(getRandomUniqueExercise(pullExercises));
         dailyExercises.push(getRandomUniqueExercise(coreExercise));
         dailyExercises.push(getRandomUniqueExercise(pushExercises));
-        dailyExercises.push(getRandomUniqueExercise(pullExercises));
       }
     console.log("Daily excercise number of excercise for day 1 are:#@#@",dailyExercises,user.level)
    
