@@ -312,9 +312,9 @@ function generateDailyExercises(exercises, day, user) {
         };
       
         dailyExercises.push(exercises.find(exercise => exercise.name === 'Isometric calf raise + calf raise'));
-        dailyExercises.push(getRandomUniqueExercise(pullExercises));
-        dailyExercises.push(getRandomUniqueExercise(pullExercises));
-        dailyExercises.push(getRandomUniqueExercise(coreExercise));
+        dailyExercises.push(exercises.find(exercise => exercise.name === 'Unilateral Lunges'));
+        dailyExercises.push(exercises.find(exercise => exercise.name === 'Single Leg Floor Touches'));
+        dailyExercises.push(exercises.find(exercise => exercise.name === 'Banded Side Steps'));
       } else {
         // Define an array to track selected exercise IDs
         const selectedExerciseIds = [];
