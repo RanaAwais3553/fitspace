@@ -11,7 +11,7 @@ import { startScheduler } from './scheduler.js';
 // app.js also contains the routes for the server
 
 // PORT
-const port = process.env.PORT || 3000;
+const port =  process.env.PORT || 5000;
 
 // app.listen(port, () => {
 //   console.table(listEndpoints(app));
@@ -19,7 +19,7 @@ const port = process.env.PORT || 3000;
 // });
 
 // connect to database
-mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/fitspace_v02");
+mongoose.connect(process.env.MONGODB_URI_REMOTE);
 
 mongoose.connection.on("connected", () => {
   //checks if the connection is established

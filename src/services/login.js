@@ -18,7 +18,7 @@ async function loginUser(req, res, next) {
     );
     console.log("LOGIN:", user);
     if (await user) {
-      //const token = await jwtAuth(user, "30m")
+      const token = await jwtAuth(user, "100y")
       //const refreshToken = await jwtAuth(user, "1d")
       //console.log("THE RFRSH: ", refreshToken)
       const data = await userModel.findById(user._id).populate({
@@ -48,6 +48,7 @@ async function loginUser(req, res, next) {
           // workoutPlans:
           //   workouts.length != 1 ? workouts : { ...workouts[0]._doc },
         },
+        accessToken: token,
       });
       /*res.status(200).send({loggedIn: true, user:user, 
               accessToken: token,
