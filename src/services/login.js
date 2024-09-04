@@ -48,7 +48,7 @@ async function loginUser(req, res, next) {
           // workoutPlans:
           //   workouts.length != 1 ? workouts : { ...workouts[0]._doc },
         },
-        accessToken: token,
+        // accessToken: token,
       });
       /*res.status(200).send({loggedIn: true, user:user, 
               accessToken: token,
