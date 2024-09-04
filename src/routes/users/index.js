@@ -38,5 +38,9 @@ userRoute.get("/current-week-number/:userId", userController.getUserWeekNumber)
 
 userRoute.post("/forgot_password", forgotPasswordValidation, userController.passwordResetEmail)
 userRoute.post("/reset_password", resetPasswordValidation, userController.resetPassword)
+// new routes for footsteps
+userRoute.post("/footsteps", userController.storeFootSteps)
+userRoute.get("/footsteps/:userId",userController.getFootStepsOnTheBaseOfUserId)
+userRoute.get("/footsteps/monthly/:month",userController.getTotalFootStepsOfAllUser)
 
 export { userRoute };

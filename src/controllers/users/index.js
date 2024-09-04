@@ -585,6 +585,90 @@ export const userController = {
         .send({ status: "failure", message: "Something went wrong" + error });
     }
 
+  },
+
+// new controller for footsteps
+  storeFootSteps: async(req, res, next) => {
+    const { userId, date, steps } = req.body;
+
+    try {
+      // Find the user by ID
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+  
+      // Check if the date already exists in stepTracker
+      const existingEntry = user.stepTracker.find((entry) => entry.date.toISOString().split('T')[0] === date);
+  
+      if (existingEntry) {
+        // Update steps for the existing date
+        existingEntry.steps = steps;
+      } else {
+        // Add a new entry to stepTracker
+        user.stepTracker.push({ date: new Date(date), steps });
+      }
+  
+      // Save the updated user document
+      await user.save();
+  
+      res.status(200).json({ message: "Footsteps data stored successfully" });
+    } catch (error) {
+      console.error("Error storing footsteps data:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+
+  },
+
+  getFootStepsOnTheBaseOfUserId:async(req, res, next) => {
+
+    const { userId } = req.params;
+
+  try {
+    // Find the user by ID and select the stepTracker field
+    const user = await User.findById(userId).select("stepTracker");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json(user.stepTracker);
+  } catch (error) {
+    console.error("Error fetching footsteps data:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+  
+},
+
+getTotalFootStepsOfAllUser: async (req, res, next) => {
+  const { month } = req.params;
+
+  try {
+    // Use an aggregate query to calculate the total steps for the specified month
+    const users = await User.aggregate([
+      { $unwind: "$stepTracker" }, // Deconstructs the stepTracker array
+      {
+        $match: {
+          "stepTracker.date": {
+            $gte: new Date(`${month}-01`),
+            $lt: new Date(`${month}-01`),
+          },
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          totalSteps: { $sum: "$stepTracker.steps" },
+        },
+      },
+    ]);
+
+    const totalSteps = users.length > 0 ? users[0].totalSteps : 0;
+
+    res.status(200).json({ month, totalSteps });
+  } catch (error) {
+    console.error("Error fetching total footsteps count:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 
+}
 };
