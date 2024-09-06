@@ -41,7 +41,7 @@
     "distanceTime":"",
     "sets":4,
     "startingWeight":{
-        "lbs":0,
+        "lbs":0, 
         "kg":0
       },
     "videoUrl":
@@ -402,7 +402,10 @@
     "mets": 6,
     "distanceTime":"10 Meters",
     "sets":1,
-    "startingWeight": "Max resistance",
+    "startingWeight":{
+      "lbs":0,
+      "kg":0
+    },
     "videoUrl":
       "https://vimeo.com/user88152925/review/779402159/cb7e35410b"
   },
@@ -775,7 +778,10 @@
     "mets": 6,
     "distanceTime":"2000 M",
     "sets":1,
-    "startingWeight": "Max resistance",
+    "startingWeight":{
+      "lbs":0,
+      "kg":0
+    },
     "videoUrl":
       "https://vimeo.com/user88152925/review/779402159/cb7e35410b"
   },

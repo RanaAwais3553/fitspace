@@ -14,22 +14,23 @@ const stripe = new Stripe(stripeKey);
  */
 async function createUserService(req, res) {
     try {
-      const userCheck = await userModel.find({email: req.body.email})
-      if(userCheck.length > 0) {
+      const userCheck = await userModel.findOne({email: req.body.email})
+      if(!!userCheck) {
         res.status(403).send({message: "email already in use"})
       } else {
-        console.log("stripe secret key in createUserService are:#@#@",stripeKey,stripe)
+        // console.log("stripe secret key in createUserService are:#@#@",stripeKey,stripe)
         const customerId = await stripe.customers.create({email:req.body.email, name: req.body.name});
         const newUser = new userModel({...req.body, stripeId: {customerId: customerId.id}});
         const { _id } = await newUser.save();
         const user = await userModel.findById(_id)
         //this is throwing up
+        // const token = await jwtAuth(user, "30m")
         /*const token = await jwtAuth(user, "30m")
         const refreshToken = await jwtAuth(user, "1d") 
         console.log("signup tokens : ", token," | ", refreshToken)*/
         res.status(201).send({
           user: user,
-          //accessToken: token,
+          // accessToken: token,
           //refreshToken: refreshToken
         });
         //return undefined

@@ -7,7 +7,7 @@ const exerciseSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ["pull", "push", "legs", "core", "kids"],
+    enum: ["pull", "push", "legs", "core","Core", "kids","lower body","cardio"],
     required: true,
   },
   muscleGroup: [
@@ -34,7 +34,7 @@ const exerciseSchema = new mongoose.Schema({
   },
   sets: {
     type: Number,
-    required: true,
+    required: true, 
   },
   startingWeight: [
     {
@@ -46,7 +46,7 @@ const exerciseSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
-    },
+    }, 
   ],
   videoUrl: {
     type: String,
