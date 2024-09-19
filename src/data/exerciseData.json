@@ -38,7 +38,7 @@
     "level": "bg",
     "equipment": "Bands",
     "mets": 5,
-    "distanceTime":"",
+    "distanceTime":"60",
     "sets":4,
     "startingWeight":{
         "lbs":0, 
@@ -70,7 +70,7 @@
     "level": "bg",
     "equipment": "Weighted bar",
     "mets": 5,
-    "distanceTime":"",
+    "distanceTime":"60",
     "sets":4,
     "startingWeight":{
         "lbs":5,
@@ -85,7 +85,7 @@
     "level": "bg",
     "equipment": "None",
     "mets": 6,
-    "distanceTime":"",
+    "distanceTime":"60",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -115,7 +115,7 @@
     "level": "bg",
     "equipment": "Dumbbells",
     "mets": 5,
-    "distanceTime":"",
+    "distanceTime":"60",
     "sets":4,
     "startingWeight":{
         "lbs":5,
@@ -145,7 +145,7 @@
     "level": "bg",
     "equipment": "Dumbbells",
     "mets": 6,
-    "distanceTime":"",
+    "distanceTime":"60",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -175,7 +175,7 @@
     "level": "bg",
     "equipment": "None",
     "mets": 8,
-    "distanceTime":"",
+    "distanceTime":"60",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -205,7 +205,7 @@
     "level": "bg",
     "equipment": "Dumbbells",
     "mets": 6,
-    "distanceTime":"",
+    "distanceTime":"60",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -325,7 +325,7 @@
     "level": "bg",
     "equipment": "Weight Bar",
     "mets": 5,
-    "distanceTime":"",
+    "distanceTime":"60",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -340,7 +340,7 @@
     "level": "bg",
     "equipment": "Dumbbells",
     "mets": 6,
-    "distanceTime":"",
+    "distanceTime":"60",
     "sets":4,
     "startingWeight":{
         "lbs":5,
@@ -355,7 +355,7 @@
     "level": "bg",
     "equipment": "Machine",
     "mets": 5,
-    "distanceTime":"",
+    "distanceTime":"60",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -370,7 +370,7 @@
     "level": "bg",
     "equipment": "Dumbbells",
     "mets": 5,
-    "distanceTime":"",
+    "distanceTime":"60",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -446,7 +446,7 @@
     "level": "adv",
     "equipment": " Leg press machine",
     "mets": 4,
-    "distanceTime":"",
+    "distanceTime":"600",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -459,9 +459,9 @@
     "category": "push",
     "muscleGroup": ["Triceps"],
     "level": "adv",
-    "equipment": " Cable machine",
+    "equipment": "Cable machine",
     "mets": 4,
-    "distanceTime":"",
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -491,7 +491,7 @@
     "level": "adv",
     "equipment": " Physio ball",
     "mets": 4,
-    "distanceTime":"",
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -506,7 +506,7 @@
     "level": "adv",
     "equipment": " Dumbbells",
     "mets": 5,
-    "distanceTime":"",
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -536,7 +536,7 @@
     "level": "adv",
     "equipment": " Dumbbells",
     "mets": 5,
-    "distanceTime":"",
+    "distanceTime":"45",
     "sets":4,
     "startingWeight":{
         "lbs":5,
@@ -551,7 +551,7 @@
     "level": "adv",
     "equipment": " Dumbbells & bands",
     "mets": 5,
-    "distanceTime":"",
+    "distanceTime":"45",
     "sets":4,
     "startingWeight":{
         "lbs":5,
@@ -581,7 +581,7 @@
     "level": "adv",
     "equipment": " Barbell",
     "mets": 6,
-    "distanceTime":"",
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":5,
@@ -611,7 +611,7 @@
     "level": "adv",
     "equipment": " leg extension machine",
     "mets": 4,
-    "distanceTime":"",
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -626,7 +626,7 @@
     "level": "adv",
     "equipment": " leg extension machine",
     "mets": 4,
-    "distanceTime":"",
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -671,7 +671,7 @@
     "level": "adv",
     "equipment": "Barbell",
     "mets": 6,
-    "distanceTime":"",
+    "distanceTime":"600",
     "sets":4,
     "startingWeight":{
         "lbs":5,
@@ -686,7 +686,7 @@
     "level": "adv",
     "equipment": "Cable machine",
     "mets": 6,
-    "distanceTime":"",
+    "distanceTime":"600",
     "sets":4,
     "startingWeight":{
         "lbs":5,
@@ -701,7 +701,7 @@
     "level": "adv",
     "equipment": "Pullup bar",
     "mets": 6,
-    "distanceTime":"",
+    "distanceTime":"600",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -716,7 +716,7 @@
     "level": "adv",
     "equipment": "Cable machine",
     "mets": 6,
-    "distanceTime":"",
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -761,7 +761,7 @@
     "level": "adv",
     "equipment": "Leg press machine",
     "mets": 4,
-    "distanceTime":"",
+    "distanceTime":"600",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -792,7 +792,7 @@
     "level": "adv",
     "equipment": "Cable machine",
     "mets": 6,
-    "distanceTime":"",
+    "distanceTime":"600",
     "sets":4,
     "startingWeight":{
         "lbs":15,
@@ -807,7 +807,7 @@
     "level": "adv",
     "equipment": "Cable machine",
     "mets": 6,
-    "distanceTime":"",
+    "distanceTime":"600",
     "sets":4,
     "startingWeight":{
         "lbs":15,
@@ -822,7 +822,7 @@
     "level": "adv",
     "equipment": "Dumbbells",
     "mets": 5,
-    "distanceTime":"",
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":5,
@@ -837,7 +837,7 @@
     "level": "adv",
     "equipment": "Hamstring curl machine",
     "mets": 4,
-    "distanceTime":"",
+    "distanceTime":"600",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -852,7 +852,7 @@
     "level": "adv",
     "equipment": "Leg press machine",
     "mets": 4,
-    "distanceTime":"",
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -867,7 +867,7 @@
     "level": "adv",
     "equipment": "Cable machine",
     "mets": 6,
-    "distanceTime":"",
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":10,
@@ -882,7 +882,7 @@
     "level": "adv",
     "equipment": "Dumbbells",
     "mets": 5,
-    "distanceTime":"",
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":5,
@@ -897,7 +897,7 @@
     "level": "adv",
     "equipment": "Dumbbells/ bands",
     "mets": 5,
-    "distanceTime":"",
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":5,
@@ -926,8 +926,8 @@
     "muscleGroup": ["upper body"],
     "level": "Kids",
     "equipment": "Bands",
-    "mets": null,
-    "distanceTime":"",
+    "mets": 6,
+    "distanceTime":"45",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -941,8 +941,8 @@
     "muscleGroup": ["legs"],
     "level": "Kids",
     "equipment": "none",
-    "mets": null,
-    "distanceTime":"",
+    "mets": 6,
+    "distanceTime":"45",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -956,8 +956,8 @@
     "muscleGroup": ["legs"],
     "level": "Kids",
     "equipment": "none",
-    "mets": null,
-    "distanceTime":"",
+    "mets": 6,
+    "distanceTime":"45",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -971,8 +971,8 @@
     "muscleGroup": ["legs", "upperbody"],
     "level": "Kids",
     "equipment": "Bands",
-    "mets": null,
-    "distanceTime":"",
+    "mets": 6,
+    "distanceTime":"45",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -986,8 +986,8 @@
     "muscleGroup": ["legs"],
     "level": "Kids",
     "equipment": "bands",
-    "mets": null,
-    "distanceTime":"",
+    "mets": 6,
+    "distanceTime":"45",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -1001,8 +1001,8 @@
     "muscleGroup": ["legs"],
     "level": "Kids",
     "equipment": "none",
-    "mets": null,
-    "distanceTime":"",
+    "mets": 6,
+    "distanceTime":"45",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -1016,8 +1016,8 @@
     "muscleGroup": ["legs"],
     "level": "Kids",
     "equipment": "none",
-    "mets": null,
-    "distanceTime":"",
+    "mets": 6,
+    "distanceTime":"60",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -1031,8 +1031,8 @@
     "muscleGroup": ["core", "upperbody"],
     "level": "Kids",
     "equipment": "none",
-    "mets": null,
-    "distanceTime":"",
+    "mets": 6,
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -1046,8 +1046,8 @@
     "muscleGroup": ["core", "upperbody"],
     "level": "Kids",
     "equipment": "none",
-    "mets": null,
-    "distanceTime":"",
+    "mets": 6,
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -1061,8 +1061,8 @@
     "muscleGroup": ["upperbody"],
     "level": "Kids",
     "equipment": "bands",
-    "mets": null,
-    "distanceTime":"",
+    "mets": 6,
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":0,
@@ -1076,8 +1076,8 @@
     "muscleGroup": ["legs"],
     "level": "Kids",
     "equipment": "bands",
-    "mets": null,
-    "distanceTime":"",
+    "mets": 6,
+    "distanceTime":"75",
     "sets":4,
     "startingWeight":{
         "lbs":0,
