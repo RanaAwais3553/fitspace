@@ -87,7 +87,7 @@ const createWeeklyWorkoutPlan = async (user) => {
 function formatWeeklyWorkoutData(workouts, user) {
   // format the data to be in the userWorkoutWeek schema
   const weekData = {
-    user: user._id,
+    user: user.id,
     week: 0,
     workoutsPerWeek: user.frequency,
     workouts: [],
@@ -277,14 +277,18 @@ function generateDailyExercises(exercises, day, user,workoutDaysPerWeek) {
   let coreExercise
   let upperBodyExercises
   let cardioExcercise
+  let cardioForBegginnerAndAdvance;
   console.log(`Generate plan for day ${day}`)
 
   cardioExcercise = exercises.filter(exercise => exercise.category === 'cardio');
-      legExercises = exercises.filter(exercise => exercise?.muscleGroup?.toLowerCase().includes('legs'));
+ legExercises = exercises.filter(exercise => 
+  exercise.muscleGroup?.some(group => group.toLowerCase().includes('legs'))
+);
+console.log("legExercises legExercises",legExercises,cardioExcercise)
       pullExercises = exercises.filter(exercise => exercise.category === 'pull');
       coreExercise = exercises.filter(exercise => exercise.category === 'core');
       pushExercises = exercises.filter(exercise => exercise.category === 'push');
-
+      cardioForBegginnerAndAdvance = cardioExcercise?.length > 0 ? cardioExcercise : legExercises
   if(user.level && user.level.toLowerCase() === 'kids') {
       //generate two days worth of workouts
   }
@@ -317,7 +321,7 @@ function generateDailyExercises(exercises, day, user,workoutDaysPerWeek) {
           dailyExercises.push(getRandomUniqueExercise(legExercises));
           dailyExercises.push(getRandomUniqueExercise(legExercises));
           dailyExercises.push(getRandomUniqueExercise(legExercises));
-          dailyExercises.push(getRandomUniqueExercise(cardioExcercise));
+          dailyExercises.push(getRandomUniqueExercise(cardioForBegginnerAndAdvance));
         }
      
 
@@ -347,7 +351,7 @@ function generateDailyExercises(exercises, day, user,workoutDaysPerWeek) {
           dailyExercises.push(getRandomUniqueExercise(legExercises));
           dailyExercises.push(getRandomUniqueExercise(legExercises));
           dailyExercises.push(getRandomUniqueExercise(legExercises));
-          dailyExercises.push(getRandomUniqueExercise(cardioExcercise));
+          dailyExercises.push(getRandomUniqueExercise(cardioForBegginnerAndAdvance));
         }
       }
     console.log("Daily excercise number of excercise for day 1 are:#@#@",dailyExercises,user)
@@ -440,7 +444,7 @@ function generateDailyExercises(exercises, day, user,workoutDaysPerWeek) {
  dailyExercises.push(getRandomUniqueExercise(legExercises));
  dailyExercises.push(getRandomUniqueExercise(legExercises));
  dailyExercises.push(getRandomUniqueExercise(legExercises));
- dailyExercises.push(getRandomUniqueExercise(cardioExcercise));
+ dailyExercises.push(getRandomUniqueExercise(cardioForBegginnerAndAdvance));
  }else{
    dailyExercises.push(getRandomUniqueExercise(pullExercises));
    dailyExercises.push(getRandomUniqueExercise(pullExercises));
@@ -469,7 +473,7 @@ function generateDailyExercises(exercises, day, user,workoutDaysPerWeek) {
         dailyExercises.push(getRandomUniqueExercise(legExercises));
         dailyExercises.push(getRandomUniqueExercise(legExercises));
         dailyExercises.push(getRandomUniqueExercise(legExercises));
-        dailyExercises.push(getRandomUniqueExercise(cardioExcercise));
+        dailyExercises.push(getRandomUniqueExercise(cardioForBegginnerAndAdvance));
         }else{
           dailyExercises.push(getRandomUniqueExercise(pullExercises));
           dailyExercises.push(getRandomUniqueExercise(pullExercises));
@@ -504,13 +508,13 @@ function generateDailyExercises(exercises, day, user,workoutDaysPerWeek) {
       dailyExercises.push(getRandomUniqueExercise(legExercises));
       dailyExercises.push(getRandomUniqueExercise(legExercises));
       dailyExercises.push(getRandomUniqueExercise(legExercises));
-      dailyExercises.push(getRandomUniqueExercise(cardioExcercise));
+      dailyExercises.push(getRandomUniqueExercise(cardioForBegginnerAndAdvance));
       }else{
         dailyExercises.push(getRandomUniqueExercise(legExercises));
       dailyExercises.push(getRandomUniqueExercise(legExercises));
       dailyExercises.push(getRandomUniqueExercise(legExercises));
       dailyExercises.push(getRandomUniqueExercise(legExercises));
-      dailyExercises.push(getRandomUniqueExercise(cardioExcercise));
+      dailyExercises.push(getRandomUniqueExercise(cardioForBegginnerAndAdvance));
       }
 
 
@@ -534,13 +538,13 @@ function generateDailyExercises(exercises, day, user,workoutDaysPerWeek) {
       dailyExercises.push(getRandomUniqueExercise(legExercises));
       dailyExercises.push(getRandomUniqueExercise(legExercises));
       dailyExercises.push(getRandomUniqueExercise(legExercises));
-      dailyExercises.push(getRandomUniqueExercise(cardioExcercise));
+      dailyExercises.push(getRandomUniqueExercise(cardioForBegginnerAndAdvance));
       }else{
         dailyExercises.push(getRandomUniqueExercise(legExercises));
       dailyExercises.push(getRandomUniqueExercise(legExercises));
       dailyExercises.push(getRandomUniqueExercise(legExercises));
       dailyExercises.push(getRandomUniqueExercise(legExercises));
-      dailyExercises.push(getRandomUniqueExercise(cardioExcercise));
+      dailyExercises.push(getRandomUniqueExercise(cardioForBegginnerAndAdvance));
       }
     }
   console.log("Daily excercise number of excercise for day 1 are:#@#@",dailyExercises,user)
