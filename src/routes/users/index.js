@@ -8,6 +8,7 @@ import {
   forgotPasswordValidation,
   resetPasswordValidation
 } from "../../validation/index.js";
+import upload from '../../middleware/profileImageMiddleware.js'
 import verifyTokenMiddle from "../../middleware/verifyTokenMiddle.js";
 const userRoute = express.Router();
 
@@ -19,15 +20,16 @@ userRoute.put(
   "/refreshToken",
   verifyTokenMiddle,
   tokenValidation,
-  userController.resetRefreshToken
-);
+  userController.resetRefreshToken 
+); 
 // userRoute.put("/update",verifyTokenMiddle, userController.updateUser)
-userRoute.put("/update", userController.updateUser);
+userRoute.put("/update",upload.single('profileImage'), userController.updateUser);
+// userRoute.put("/update", userController.updateUser);
 userRoute.put("/update/userworkoutplan", userController.updateUserWorkoutPlan);
 userRoute.delete("/:userid", verifyTokenMiddle, userController.deleteUser);
 userRoute.get("/workoutplan/weekly", userController.getWeeklyPlan);
 userRoute.post("/workoutplan/complete", userController.setCompleteWeek);
-userRoute.post("/workoutplan/reset", userController.resetWorkoutWeeks);
+userRoute.post("/workoutplan/reset", userController.resetWorkoutWeeks); 
 //Reference schema contains all the symbols for Level, Gym Type, Gym Goal
 userRoute.get("/levels", userController.getLevelRef);
 userRoute.get("/gymtypes", userController.getGymTypeRef);

@@ -16,7 +16,7 @@
     "url": "git+https://github.com/Onyx-Discovery/olympia-be.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "", 
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Onyx-Discovery/olympia-be/issues"
@@ -37,6 +37,7 @@
     "moment": "^2.29.4",
     "mongodb": "^4.11.0",
     "mongoose": "^6.7.0",
+    "multer": "^1.4.5-lts.1",
     "node-cron": "^3.0.3",
     "nodemailer": "^6.8.0",
     "paypal-rest-sdk": "^1.8.1",

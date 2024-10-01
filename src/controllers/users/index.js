@@ -212,6 +212,7 @@ export const userController = {
    * @param {Object} next The express next function
    */
   createUser: async (req, res, next) => {
+    console.log("req data while user creation",req)
     const errorsList = validationResult(req);
     try {
       if (errorsList.isEmpty()) {
@@ -334,12 +335,15 @@ export const userController = {
 
     try {
       const data = req.body;
-      console.log(req.body);
       const user = await User.findById(data._id);
       if (!user) return res.status(404).json({ msg: "User not found" });
 
       const updates = Object.keys(req.body);
       updates.forEach((update) => (user[update] = req.body[update]));
+     
+      if (req.file) {
+        user.avatar = req.file.path; // Save the file path (or any other field)
+      }
       await user.save();
       let updatedUser = await User.findById(data._id);
       res.status(201).json(updatedUser);
@@ -643,32 +647,60 @@ getTotalFootStepsOfAllUser: async (req, res, next) => {
   const { month } = req.params;
 
   try {
-    // Use an aggregate query to calculate the total steps for the specified month
+    // Parse the provided month and set the start and end dates
+    const startDate = new Date(`${month}-01`); // Start of the month
+    const currentDate = new Date(); // Current date
+
+    // Ensure the endDate is within the same month
+    let endDate;
+    if (currentDate.getMonth() + 1 === startDate.getMonth() + 1 && currentDate.getFullYear() === startDate.getFullYear()) {
+      endDate = currentDate; // Use the current date if the month is the same
+    } else {
+      endDate = new Date(startDate);
+      endDate.setMonth(endDate.getMonth() + 1); // Start of the next month
+    }
+
+    // Use an aggregate query to calculate the total steps for each user for the specified month
     const users = await User.aggregate([
       { $unwind: "$stepTracker" }, // Deconstructs the stepTracker array
       {
         $match: {
           "stepTracker.date": {
-            $gte: new Date(`${month}-01`),
-            $lt: new Date(`${month}-01`),
+            $gte: startDate, // Start of the current month
+            $lt: endDate, // Up to the current date or start of the next month
           },
         },
       },
       {
         $group: {
-          _id: null,
-          totalSteps: { $sum: "$stepTracker.steps" },
+          _id: "$_id", // Group by userId
+          name: { $first: "$name" }, // Get the user's first name
+          surname: { $first: "$surname" }, // Get the user's surname
+          totalSteps: {
+            $sum: {
+              $cond: {
+                if: { $or: [{ $eq: ["$stepTracker.steps", null] }, { $eq: ["$stepTracker.steps", undefined] }, { $eq: ["$stepTracker.steps", 0] }] },
+                then: 0,
+                else: "$stepTracker.steps",
+              },
+            },
+          }, // Sum steps, but handle null, undefined, or 0 values
+        },
+      },
+      {
+        $project: {
+          _id: 0, // Exclude _id from the result
+          userId: "$_id", // Rename _id to userId
+          username: { $concat: ["$name", " ", "$surname"] }, // Concatenate name and surname as username
+          totalSteps: 1,
         },
       },
     ]);
-
-    const totalSteps = users.length > 0 ? users[0].totalSteps : 0;
-
-    res.status(200).json({ month, totalSteps });
+    res.status(200).json({ month, users });
   } catch (error) {
     console.error("Error fetching total footsteps count:", error);
     res.status(500).json({ error: "Internal server error" });
   }
-
 }
+
 };

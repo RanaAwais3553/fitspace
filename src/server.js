@@ -4,7 +4,7 @@ import { app } from "./app.js";
 import dotenv from "dotenv/config";
 import mongoose from "mongoose";
 import { startScheduler } from './scheduler.js';
-
+// import seedExercises from '../src/seeder/seedExercises.js'
 // import sampleRoute from "./services/sampleRoute"
 
 // express servr is initialized and exported from app.js
@@ -29,6 +29,7 @@ mongoose.connection.on("connected", () => {
     console.table(listEndpoints(app));
 
     console.log(`Server running on port ${port}`);
+    // seedExercises()
     startScheduler();
   });
 });

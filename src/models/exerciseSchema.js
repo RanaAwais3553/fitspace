@@ -7,7 +7,7 @@ const exerciseSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ["pull", "push", "legs", "core","Core", "kids","lower body","cardio"],
+    enum: ["pull","Pull","Push", "push","Legs", "legs", "core","Core", "kids","Kids", "lower body","Lower body", "cardio","Cardio"],
     required: true,
   },
   muscleGroup: [

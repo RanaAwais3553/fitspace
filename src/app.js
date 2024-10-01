@@ -7,7 +7,10 @@ import { paymentRoute } from "./routes/payment/index.js";
 import { userRoute } from "./routes/users/index.js";
 import { webhookRoute } from "./routes/webhooks/index.js";
 import { yooMoneyRoute } from "./routes/yoomoney/index.js";
+import upload from '../src/middleware/profileImageMiddleware.js'
 const app = express();
+
+// app.use(upload.single('profileImage'))
 
 app.use(cors("*"));
 app.use(express.json());
@@ -21,7 +24,7 @@ app.get("/test", (req, res) => {
     ]  
 });
 });
-
+// app.use(express.static(__dirname + '/public'));
 app.use("/users", userRoute);
 app.use("/payment", paymentRoute);
 app.use("/exercise", exerciseRoute);

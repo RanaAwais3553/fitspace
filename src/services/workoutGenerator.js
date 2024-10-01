@@ -144,7 +144,7 @@ async function createFullWorkoutPlan(user) {
     const query = {
       level: user.level
     };
-    const exercises = await Exercise.find(query);
+    const exercises = await Exercise.find(query)
 
     let workoutDaysPerWeek 
     if(user.level && user.level.toLowerCase() === 'kids') {
@@ -158,11 +158,11 @@ async function createFullWorkoutPlan(user) {
      * Band aid fix to handle Kids level: 2 days workout per week and only 4 workout types per day
      * Have to override the settings above
      */
-    /*if(user.level.toLowerCase() === 'Kids') {
-      exercisesPerDay = 4
-      //must be overriden because during onboarding, Kids level has no option for 2 days/week workout
-      workoutDaysPerWeek = 2
-    }*/
+    // if(user.level.toLowerCase() === 'Kids') {
+    //   exercisesPerDay = 4
+    //   //must be overriden because during onboarding, Kids level has no option for 2 days/week workout
+    //   workoutDaysPerWeek = 2
+    // }
 
     for (let week = 1; week <= numberOfWeeks; week++) {
       const weeklyPlan = [];
@@ -280,15 +280,15 @@ function generateDailyExercises(exercises, day, user,workoutDaysPerWeek) {
   let cardioForBegginnerAndAdvance;
   console.log(`Generate plan for day ${day}`)
 
-  cardioExcercise = exercises.filter(exercise => exercise.category === 'cardio');
+  cardioExcercise = exercises.filter(exercise => exercise.category?.toLowerCase() === 'cardio');
  legExercises = exercises.filter(exercise => 
   exercise.muscleGroup?.some(group => group.toLowerCase().includes('legs'))
 );
 console.log("legExercises legExercises",legExercises,cardioExcercise)
-      pullExercises = exercises.filter(exercise => exercise.category === 'pull');
-      coreExercise = exercises.filter(exercise => exercise.category === 'core');
-      pushExercises = exercises.filter(exercise => exercise.category === 'push');
-      cardioForBegginnerAndAdvance = cardioExcercise?.length > 0 ? cardioExcercise : legExercises
+      pullExercises = exercises.filter(exercise => exercise.category?.toLowerCase() === 'pull');
+      coreExercise = exercises.filter(exercise => exercise.category?.toLowerCase() === 'core');
+      pushExercises = exercises.filter(exercise => exercise.category?.toLowerCase() === 'push');
+      cardioForBegginnerAndAdvance = cardioExcercise
   if(user.level && user.level.toLowerCase() === 'kids') {
       //generate two days worth of workouts
   }
