@@ -335,13 +335,14 @@ export const userController = {
 
     try {
       const data = req.body;
+      console.log("update user",data)
       const user = await User.findById(data._id);
       if (!user) return res.status(404).json({ msg: "User not found" });
 
       const updates = Object.keys(req.body);
       updates.forEach((update) => (user[update] = req.body[update]));
      
-      if (req.file) {
+      if (req?.file) {
         user.avatar = req.file.path; // Save the file path (or any other field)
       }
       await user.save();
