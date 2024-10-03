@@ -6,6 +6,10 @@ const userSchema = new mongoose.Schema({
   surname: { type: String, required: true },
   email: { type: String, required: true,unique: true },
   password: { type: String, required: true },
+  isToShowSteps: {
+    type: Boolean,
+    default: false,
+  },
   role: { type: String, enum: ["admin", "user"], default: "user" },
   exercises: [{ type: mongoose.Schema.Types.ObjectId, ref: "Exercise" }],
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],

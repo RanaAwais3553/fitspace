@@ -686,6 +686,7 @@ getTotalFootStepsOfAllUser: async (req, res, next) => {
               },
             },
           }, // Sum steps, but handle null, undefined, or 0 values
+          isToShowSteps: { $first: { $ifNull: ["$isToShowSteps", false] } }, // Default to false if isToShowSteps doesn't exist
         },
       },
       {
@@ -693,15 +694,77 @@ getTotalFootStepsOfAllUser: async (req, res, next) => {
           _id: 0, // Exclude _id from the result
           userId: "$_id", // Rename _id to userId
           username: { $concat: ["$name", " ", "$surname"] }, // Concatenate name and surname as username
-          totalSteps: 1,
+          totalSteps: 1, // Include total steps in the response
+          isToShowSteps: 1, // Include isToShowSteps in the response
         },
       },
     ]);
+
     res.status(200).json({ month, users });
   } catch (error) {
     console.error("Error fetching total footsteps count:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 }
+
+// getTotalFootStepsOfAllUser: async (req, res, next) => {
+//   const { month } = req.params;
+
+//   try {
+//     // Parse the provided month and set the start and end dates
+//     const startDate = new Date(`${month}-01`); // Start of the month
+//     const currentDate = new Date(); // Current date
+
+//     // Ensure the endDate is within the same month
+//     let endDate;
+//     if (currentDate.getMonth() + 1 === startDate.getMonth() + 1 && currentDate.getFullYear() === startDate.getFullYear()) {
+//       endDate = currentDate; // Use the current date if the month is the same
+//     } else {
+//       endDate = new Date(startDate);
+//       endDate.setMonth(endDate.getMonth() + 1); // Start of the next month
+//     }
+
+//     // Use an aggregate query to calculate the total steps for each user for the specified month
+//     const users = await User.aggregate([
+//       { $unwind: "$stepTracker" }, // Deconstructs the stepTracker array
+//       {
+//         $match: {
+//           "stepTracker.date": {
+//             $gte: startDate, // Start of the current month
+//             $lt: endDate, // Up to the current date or start of the next month
+//           },
+//         },
+//       },
+//       {
+//         $group: {
+//           _id: "$_id", // Group by userId
+//           name: { $first: "$name" }, // Get the user's first name
+//           surname: { $first: "$surname" }, // Get the user's surname
+//           totalSteps: {
+//             $sum: {
+//               $cond: {
+//                 if: { $or: [{ $eq: ["$stepTracker.steps", null] }, { $eq: ["$stepTracker.steps", undefined] }, { $eq: ["$stepTracker.steps", 0] }] },
+//                 then: 0,
+//                 else: "$stepTracker.steps",
+//               },
+//             },
+//           }, // Sum steps, but handle null, undefined, or 0 values
+//         },
+//       },
+//       {
+//         $project: {
+//           _id: 0, // Exclude _id from the result
+//           userId: "$_id", // Rename _id to userId
+//           username: { $concat: ["$name", " ", "$surname"] }, // Concatenate name and surname as username
+//           totalSteps: 1,
+//         },
+//       },
+//     ]);
+//     res.status(200).json({ month, users });
+//   } catch (error) {
+//     console.error("Error fetching total footsteps count:", error);
+//     res.status(500).json({ error: "Internal server error" });
+//   }
+// }
 
 };
