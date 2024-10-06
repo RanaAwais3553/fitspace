@@ -142,9 +142,9 @@ async function createFullWorkoutPlan(user) {
 
     
     const query = {
-      level: user.level
+      level: user.level?.toLowerCase()
     };
-    const exercises = await Exercise.find(query)
+    const exercises = await Exercise.find(query) 
 
     let workoutDaysPerWeek 
     if(user.level && user.level.toLowerCase() === 'kids') {
@@ -173,7 +173,7 @@ async function createFullWorkoutPlan(user) {
     
         if (user.level && user.level.toLowerCase() === 'kids') {
           // For Kids level, generate daily exercises with the function for kids
-          dailyExercises = generateDailyExercisesForKids(exercises, day);
+          dailyExercises = generateDailyExercisesForKids(exercises, day, user,workoutDaysPerWeek);
         } else {
           // For other levels, use the existing function
           dailyExercises = generateDailyExercises(exercises, day, user,workoutDaysPerWeek);
@@ -227,22 +227,39 @@ function generateDailyExercisesForKids(exercises, day) {
   const endIndex = startIndex + 4;
   
   // Check if we need to wrap around to the beginning of the list
-  const wrapAround = endIndex > exercises.length;
+  const wrapAround = endIndex > exercises?.length;
   
   // Create an array to store the daily exercises
   const dailyExercises = [];
-  
+  console.log("exercises data in kids generator function is:$#$#",exercises)
   // Add exercises to the daily list
-  for (let i = startIndex; i < endIndex; i++) {
-    if (i >= exercises.length) {
-      // Wrap around to the beginning if necessary
-      const wrappedIndex = i - exercises.length;
-      dailyExercises.push(exercises[wrappedIndex]);
-    } else {
-      dailyExercises.push(exercises[i]);
-    }
-  }
-  
+  // for (let i = startIndex; i < endIndex; i++) {
+  //   if (i >= exercises.length) {
+  //     // Wrap around to the beginning if necessary
+  //     const wrappedIndex = i - exercises.length;
+  //     dailyExercises.push(exercises[wrappedIndex]);
+  //   } else {
+  //     dailyExercises.push(exercises[i]);
+  //   }
+  // }
+  const selectedExerciseIds = [];
+      
+  // Function to get a random exercise from the provided array while ensuring uniqueness
+  const getRandomUniqueExercise = (exerciseArray) => {
+    let randomExercise;
+    do {
+      randomExercise = getRandomExercise(exerciseArray);
+    } while (selectedExerciseIds.includes(randomExercise._id));
+
+    // Add the selected exercise's _id to the tracking array
+    selectedExerciseIds.push(randomExercise._id);
+    return randomExercise;
+  };
+  dailyExercises.push(getRandomUniqueExercise(exercises));
+  dailyExercises.push(getRandomUniqueExercise(exercises));
+  dailyExercises.push(getRandomUniqueExercise(exercises));
+  dailyExercises.push(getRandomUniqueExercise(exercises));
+ 
   return dailyExercises;
 }
 
