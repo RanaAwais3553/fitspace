@@ -7,8 +7,15 @@ import { paymentRoute } from "./routes/payment/index.js";
 import { userRoute } from "./routes/users/index.js";
 import { webhookRoute } from "./routes/webhooks/index.js";
 import { yooMoneyRoute } from "./routes/yoomoney/index.js";
+import path from 'path'
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
 const app = express();
 const allowedOrigins = ['http://54.253.2.145:3000'];
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const corsOptions = {
   origin: (origin, callback) => {
@@ -35,6 +42,7 @@ app.get("/test", (req, res) => {
     ]  
 });
 });
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/users", userRoute);
 app.use("/payment", paymentRoute);
 app.use("/exercise", exerciseRoute);

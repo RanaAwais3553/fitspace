@@ -52,6 +52,15 @@ const exerciseSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  rep1:{
+    type:String,
+  },
+  rep2:{
+    type:String,
+  },
+  rep3:{
+    type:String,
+  }
 });
 
 export default mongoose.model("exercises", exerciseSchema);

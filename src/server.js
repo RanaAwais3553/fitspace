@@ -29,7 +29,7 @@ mongoose.connection.on("connected", () => {
     console.table(listEndpoints(app));
 
     console.log(`Server running on port ${port}`);
-    // seedExercises()
+    // seedExercises();
     startScheduler();
   });
 });
